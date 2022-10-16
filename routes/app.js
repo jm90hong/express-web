@@ -8,7 +8,8 @@ const port = 3000
 
 
 app.set('view engine', 'ejs');
-app.set('views', './view/ejs');
+//app.set('view', './view/ejs');
+app.set("views", join(__dirname, "./view/ejs"));
 app.use('/user', user);
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
@@ -21,6 +22,12 @@ app.get('/', (req, res) => {
   res.render('index',{name:'코딩합시다!'});
 
 })
+
+
+app.get('/truck', (req, res) => {
+  //res.send('Hello World!')
+  res.render('truck',{name:'코딩합시다!'});
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
