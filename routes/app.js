@@ -8,8 +8,10 @@ const port = 3000
 
 
 app.set('view engine', 'ejs');
-//app.set('view', './view/ejs');
-app.set("views", join(__dirname, "./view/ejs"));
+app.set('views', '../view/ejs');
+app.set("views", path.join(__dirname, "../view/ejs"));
+app.use(express.static(__dirname + '../public'));
+
 app.use('/user', user);
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
