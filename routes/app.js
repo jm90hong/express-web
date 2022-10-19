@@ -7,13 +7,20 @@ const app = express()
 const port = 3000
 
 
+//view 엔진을 ejs로 설정
 app.set('view engine', 'ejs');
-app.set('views', '../view/ejs');
-app.set("views", path.join(__dirname, "../view/ejs"));
+
+//ejs 기본 경로 설정
+app.set('views', path.join(__dirname, "../view/ejs"));
+
+//정적(static) 파일 경로 설정
 app.use(express.static(path.join(__dirname, '../public')));
 
 
+//라우터 등록
 app.use('/user', user); //요청시 127.0.0.1:3000/user/path
+
+//파싱
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
